@@ -1,5 +1,6 @@
 # Deep Depth-of-Field for Microscopy On-The-Go
 
+![This is an image](fig1_adi.png)
 
 ## Here we publish the files in order to reproduce our results which we published in our paper **"Deep Depth-of-Field for Microscopy On-The-Go"**.
 - In the folder **ZEMAX** you can find the OpticStudio ZEMAX files for our imaging system.
@@ -8,4 +9,4 @@ In order to run the matlab script it needs to be able to execute the ZEMAX optim
 
 - In the folder **"Checkpoints"** you can find our checkpoints for our trained model for the network published in "Scale-recurrent Network for Deep Image Deblurring". In this folder are the checkpoints for our model trained without noise and with noise.  
 
-![This is an image](fig1_adi.png)
+
