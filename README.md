@@ -29,27 +29,32 @@ this is a picture of the base folder
 The base folder, microscopy_deep_dof,  should now look like this:
 
 - In the folder ZEMAX, you can find the OpticStudio ZEMAX files for our imaging system.
-- In the folder "MatlabSimulationCode", you may find the related Matlab script to create the datasets. All these scripts are in the subfolder CodeForDataSetCreation:
-- RunSteps - the script creates the kernels for the needed focal planes and their out-of-focus planes. To run this script, you need to be able to execute the ZEMAX optimization process.
- -MakeKernelStack - the script creates the final kernels used for deblurring the images. Each kernel is formed using the kernels in the previous step according to the procedure explained in the paper. Please note that you can find the kernels produced at the end of this stage in the folder DataSet.
-- BlurImgKernels - the script creates blurred images using the kernels produced in the previous stage and the sharp images. The sharp images are in the folder DataSet.
-- MakeTripletsForTrain - the script creates the list of the dataset used for training the srn-deblur network. The list contains the sharp images, the blurred images, and the kernels. The rest of the files in the folder are auxiliary files.
-- In the folder Code, you can find the python code for the srn-deblur network.
-- In the folder "FinalCheckpoints", you can find the final checkpoints for our trained model of the network published in "Scale-recurrent Network for Deep Image Deblurring".
-- In the folder docker, you can find the docker file for setting up the environment.
+- In the folder MatlabSimulationCode, you may find the related Matlab script to create the datasets. 
+- All these scripts are in the subfolder CodeForDataSetCreation:
+  - RunSteps - the script creates the kernels for the needed focal planes and their out-of-focus planes. To run this script, you need to be able to execute the ZEMAX optimization process.
+
+  * MakeKernelStack - the script creates the final kernels used for deblurring the images. Each kernel is formed using the kernels in the previous step according to the procedure explained in the paper. Please note that you can find the kernels produced at the end of this stage in the folder DataSet.
+  - BlurImgKernels - the script creates blurred images using the kernels produced in the previous stage and the sharp images. The sharp images are in the folder DataSet.
+  - MakeTripletsForTrain - the script creates the list of the dataset used for training the srn-deblur network. The list contains the sharp images, the blurred images, and the kernels. The rest of the files in the folder are auxiliary files.
+  - In the folder Code, you can find the python code for the srn-deblur network.
+  - In the folder FinalCheckpoints, you can find the final checkpoints for our trained model of the network published in "Scale-recurrent Network for Deep Image Deblurring".
+  - In the folder docker, you can find the docker file for setting up the environment.
 
 ## Dataset creation
 
 The code used for creating the dataset is in Matlab.
-To create the blurred images:
-1. open the file BlurImgKernels
-2. write the full path to the base folder (ending with the folder microscopy_deep_dof/MatlabSimulationCode/CodeForDataSetCreation).
+
+### Creating the blurred images:
+
+1. Open the file BlurImgKernels
+2. Write the full path to the base folder (ending with the folder microscopy_deep_dof/MatlabSimulationCode/CodeForDataSetCreation).
 3. Run this file.
-- After blurring the images, we need to prepare the dataset for the network.
+
+### Preparing the dataset for the network:
 
 1. Open the file MakeTripletsForTrain
-2. enter the same base folder (ending with microscopy_deep_dof/MatlabSimulationCode/CodeForDataSetCreation)
-3. run the file.
+2. Enter the same base folder (ending with microscopy_deep_dof/MatlabSimulationCode/CodeForDataSetCreation)
+3. rRun the file.
 
 ## Training
 
@@ -62,5 +67,6 @@ docker run --rm -it --gpus 0 -v /media/UbuntuData3/Users_Data/amitp/Projects/Edo
 cd /opt/project/
 python Code/my_run_model.py - enter code lines maybe
 ```
-1. Evaluate the performance
-2. enter code lines.
+## Evaluation
+
+1. enter code lines.
