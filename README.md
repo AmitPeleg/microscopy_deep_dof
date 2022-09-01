@@ -19,7 +19,7 @@ docker build -t srn-deblur-v0 docker
 ```bash
 wget https://zenodo.org/record/6822198/files/DataSet.zip?download=1
 wget https://zenodo.org/record/6822198/files/RealWorldScenes.zip?download=1
-unzip DataSet.zip RealWorldScenes.zip
+unzip DataSet.zip?download=1 RealWorldScenes.zip?download=1
 ```
 
 this is a picture of the base folder
@@ -42,19 +42,18 @@ The base folder, microscopy_deep_dof,  should now look like this:
 
 ## Dataset creation
 
-The code used for creating the dataset is in Matlab.
-
 ### Creating the blurred images:
 
-1. Open the file BlurImgKernels
-2. Write the full path to the base folder (ending with the folder microscopy_deep_dof/MatlabSimulationCode/CodeForDataSetCreation).
-3. Run this file.
+1. Open Matlab
+2. Open the file BlurImgKernels from the folder microscopy_deep_dof/MatlabSimulationCode/CodeForDataSetCreation
+3. Write the full path to the base folder (ending with the folder microscopy_deep_dof/MatlabSimulationCode/CodeForDataSetCreation)
+4. Run the file
 
 ### Preparing the dataset for the network:
 
 1. Open the file MakeTripletsForTrain
-2. Enter the same base folder (ending with microscopy_deep_dof/MatlabSimulationCode/CodeForDataSetCreation)
-3. rRun the file.
+2. Write the same base folder (ending with microscopy_deep_dof/MatlabSimulationCode/CodeForDataSetCreation)
+3. Run the file
 
 ## Training
 
