@@ -22,11 +22,9 @@ wget https://zenodo.org/record/6822198/files/RealWorldScenes.zip?download=1
 unzip DataSet.zip?download=1 RealWorldScenes.zip?download=1
 ```
 
-this is a picture of the base folder
+The base folder, microscopy_deep_dof,  should now look like this:
 
 ![The base folder](Images/file.png)
-
-The base folder, microscopy_deep_dof,  should now look like this:
 
 - In the folder ZEMAX, you can find the OpticStudio ZEMAX files for our imaging system.
 - In the folder MatlabSimulationCode, you may find the related Matlab script to create the datasets. 
