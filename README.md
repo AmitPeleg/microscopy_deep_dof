@@ -50,13 +50,13 @@ unzip RealWorldScenes.zip?download=1
 
 1. Open Matlab
 2. Open the file BlurImgKernels from the folder microscopy_deep_dof/MatlabSimulationCode/CodeForDataSetCreation
-3. Write the full path to the base folder (ending with the folder microscopy_deep_dof/MatlabSimulationCode/CodeForDataSetCreation)
+3. Write the full path to the base folder (ending with microscopy_deep_dof)
 4. Run the file
 
 ### Preparing the dataset for the network:
 
 1. Open the file MakeTripletsForTrain
-2. Write the same base folder (ending with microscopy_deep_dof/MatlabSimulationCode/CodeForDataSetCreation)
+2. Write the same base folder (ending with microscopy_deep_dof)
 3. Run the file
 
 ## Training
