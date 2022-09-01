@@ -61,11 +61,11 @@ unzip RealWorldScenes.zip?download=1
 
 ## Training
 
-1. Set up the environment
+### Set up the environment
 ```bash
 docker run --rm -it --gpus 0 -v /media/UbuntuData3/Users_Data/amitp/Projects/EdofMicrospcope/UploadToGithub/microscopy_deep_dof:/opt/project srn-deblur-v0
 ```
-2. Run the code
+### Run the code
 ```bash
 cd /opt/project/
 python Code/my_run_model.py - enter code lines maybe
