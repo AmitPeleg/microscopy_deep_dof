@@ -24,28 +24,27 @@ class DEBLUR(object):
         self.chns = 3 if self.args.model == 'color' else 1  # input / output channels
         self.reblur = args.beta != 0
 
-        # if args.phase == 'train':
-        self.crop_size = args.crop_size
-        self.data_list = open(args.datalist, 'rt').read().splitlines()
+        if args.phase == 'train':
+            self.crop_size = args.crop_size
+            self.data_list = open(args.datalist, 'rt').read().splitlines()
         # self.data_list = list(map(lambda x: x.split(' '), self.data_list))
-        self.data_list = list(map(lambda x: x.split('\t'), self.data_list))
-        random.shuffle(self.data_list)
+            self.data_list = list(map(lambda x: x.split('\t'), self.data_list))
+            random.shuffle(self.data_list)
+            self.batch_size = args.batch_size
+            self.epoch = args.epoch
+            self.data_size = (len(self.data_list)) // self.batch_size
+            self.org_ckpt_step = self.args.org_ckpt_step
+            already_train_steps = args.step - self.org_ckpt_step
+            already_train_epochs = already_train_steps / self.data_size
+            remaining_epochs = self.epoch - already_train_epochs
+            self.max_steps = int(remaining_epochs * self.data_size + self.org_ckpt_step)
+            self.learning_rate = args.learning_rate
+
+        self.transf_lr = args.transfer_learning
+
         self.train_dir = os.path.join('../checkpoints', args.model, args.expname)
         if not os.path.exists(self.train_dir):
             os.makedirs(self.train_dir)
-
-        self.batch_size = args.batch_size
-        self.epoch = args.epoch
-        self.data_size = (len(self.data_list)) // self.batch_size
-        self.org_ckpt_step = self.args.org_ckpt_step
-        already_train_steps = args.step - self.org_ckpt_step
-        already_train_epochs = already_train_steps / self.data_size
-        remaining_epochs = self.epoch - already_train_epochs
-        self.max_steps = int(remaining_epochs * self.data_size + self.org_ckpt_step)
-        self.learning_rate = args.learning_rate
-
-        # if args.transfer_lr = True
-        self.transf_lr = args.transfer_learning
 
         self.kernel_sz = 341
         self.output_chns = 3
