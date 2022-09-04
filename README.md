@@ -63,7 +63,7 @@ unzip RealWorldScenes.zip?download=1
 
 ### Set up the environment
 ```bash
-docker run --rm -it --gpus 0 -v /media/UbuntuData3/Users_Data/amitp/Projects/EdofMicrospcope/UploadToGithub/microscopy_deep_dof:/opt/project srn-deblur-v0
+docker run --rm -it --gpus 0 -v <path/to/base/folder>:/opt/project srn-deblur-v0
 ```
 ### Run the code
 ```bash
