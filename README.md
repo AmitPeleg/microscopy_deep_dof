@@ -73,6 +73,7 @@ cd /opt/project/
 python Code/my_run_model.py --phase 'train' --expname <'folder name for the run'> --step 0
 ```
 ## Evaluation
-
+```bash
 python Code/my_run_model.py --input_path '/opt/project/RealWorldScenes/Lab/OneShots' --output_path '/opt/project/test/Lab'
 python Code/my_run_model.py --input_path '/opt/project/RealWorldScenes/UnderWater/OneShots' --output_path '/opt/project/test/UnderWater'
+```
