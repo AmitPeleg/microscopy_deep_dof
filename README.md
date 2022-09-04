@@ -69,11 +69,11 @@ docker run --rm -it --gpus 0 -v <'path/to/base/folder'>:/opt/project srn-deblur-
 ### Run the code
 Replace in the following line the phrase <'folder name for the run'> with your name and then run the command
 ```bash
-cd /opt/project/
-python Code/my_run_model.py --phase 'train' --expname <'folder name for the run'> --step 0
+cd /opt/project/Code/
+python my_run_model.py --phase 'train' --expname <'folder name for the run'> --step 0
 ```
 ## Evaluation
 ```bash
-python Code/my_run_model.py --input_path '/opt/project/RealWorldScenes/Lab/OneShots' --output_path '/opt/project/test/Lab'
-python Code/my_run_model.py --input_path '/opt/project/RealWorldScenes/UnderWater/OneShots' --output_path '/opt/project/test/UnderWater'
+python my_run_model.py --input_path '/opt/project/RealWorldScenes/Lab/OneShots' --output_path '/opt/project/test/Lab'
+python my_run_model.py --input_path '/opt/project/RealWorldScenes/UnderWater/OneShots' --output_path '/opt/project/test/UnderWater'
 ```
