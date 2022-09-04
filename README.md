@@ -2,11 +2,10 @@
 
 ## Downloading and building the project repository
 
-This repository builds a  project environment in docker with Python 2.7.15 and Tensorflow 1.15.
+This repository builds a project environment in docker with Tensorflow 1.15 and tested on TITAN Xp.
 We recommend using the docker file to ensure that all dependencies are correctly installed.
 
 ### To download and build the environment:
-
 ```bash
 git clone https://github.com/VISEAONLab/microscopy_deep_dof
 cd microscopy_deep_dof/
