@@ -23,6 +23,19 @@ unzip DataSet.zip?download=1
 unzip RealWorldScenes.zip?download=1
 ```
 
+## Enter the docker environment
+Replace in the following line the phrase <'path/to/base/folder'> with your base folder name (ending with microscopy_deep_dof) and then run the command
+```bash
+docker run --rm -it --gpus 0 -v <'path/to/base/folder'>:/opt/project srn-deblur-v0
+```
+
+## Inference using the trained model
+Run these lines inside the docker environment
+```bash
+python my_run_model.py --input_path '/opt/project/RealWorldScenes/Lab/OneShots' --output_path '/opt/project/test/Lab'
+python my_run_model.py --input_path '/opt/project/RealWorldScenes/UnderWater/OneShots' --output_path '/opt/project/test/UnderWater'
+```
+
 ### The base folder, microscopy_deep_dof,  should now look like this:
 
 ![The base folder](Images/view_folder.png)
@@ -43,7 +56,6 @@ unzip RealWorldScenes.zip?download=1
  - In the folder ZEMAX, you can find the OpticStudio ZEMAX files for our imaging system.
 
 
-
 ## Dataset creation
 
 ### Creating the blurred images:
@@ -60,20 +72,8 @@ unzip RealWorldScenes.zip?download=1
 3. Run the file
 
 ## Training
-
-### Set up the environment
-Replace in the following line the phrase <'path/to/base/folder'> with your base folder name (ending with microscopy_deep_dof) and then run the command
-```bash
-docker run --rm -it --gpus 0 -v <'path/to/base/folder'>:/opt/project srn-deblur-v0
-```
-### Run the code
+### Run the following code to run the network
 Replace in the following line the phrase <'folder name for the run'> with your name and then run the command
 ```bash
-cd /opt/project/Code/
 python my_run_model.py --phase 'train' --expname <'folder name for the run'> --step 0
-```
-## Evaluation
-```bash
-python my_run_model.py --input_path '/opt/project/RealWorldScenes/Lab/OneShots' --output_path '/opt/project/test/Lab'
-python my_run_model.py --input_path '/opt/project/RealWorldScenes/UnderWater/OneShots' --output_path '/opt/project/test/UnderWater'
 ```
