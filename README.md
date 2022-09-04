@@ -72,7 +72,7 @@ python my_run_model.py --input_path '/opt/project/RealWorldScenes/UnderWater/One
 
 ## Training
 ### Run the following code to run the network
-Replace in the following line the phrase <'folder name for the run'> with your name, and then run the command
+Replace in the following line the phrase <'folder name for the run'> with your name, and then run the command inside the docker environment
 ```bash
 python my_run_model.py --phase 'train' --expname <'folder name for the run'> --step 0
 ```
