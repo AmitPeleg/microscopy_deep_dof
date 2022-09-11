@@ -1,15 +1,25 @@
 # Deep Depth-of-Field for Microscopy On-The-Go
 
-## Downloading and building the project repository
-
-This repository builds a project environment using docker with Tensorflow 1.15 and is tested on TITAN Xp.
-We recommend using the docker file to ensure that all dependencies are correctly installed.
-
-### Downloading and building the environment:
+## Installation
+### Download the repository
 ```bash
 git clone https://github.com/VISEAONLab/microscopy_deep_dof
 cd microscopy_deep_dof/
-docker build -t srn-deblur-v0 docker
+```
+
+### Docker 
+We use a docker image with Tensorflow 1.15 and Python 2.7 on NVIDIA TITAN Xp.
+We recommend using the docker file to ensure that all dependencies are correctly installed.
+
+#### To build the image:
+```bash
+docker build -t srn-deblur docker
+```
+
+#### To enter the docker container:
+Replace in the following line the phrase <'path/to/base/folder'> with your base folder name (ending with microscopy_deep_dof), and then run the command
+```bash
+docker run --rm -it --gpus 0 -v <'path/to/base/folder'>:/opt/project srn-deblur
 ```
 
 ## Datasets
@@ -22,11 +32,7 @@ unzip DataSet.zip?download=1
 unzip RealWorldScenes.zip?download=1
 ```
 
-## Enter the docker environment
-Replace in the following line the phrase <'path/to/base/folder'> with your base folder name (ending with microscopy_deep_dof), and then run the command
-```bash
-docker run --rm -it --gpus 0 -v <'path/to/base/folder'>:/opt/project srn-deblur-v0
-```
+
 
 ## Inference using the trained model
 Run these lines inside the docker environment
@@ -39,14 +45,14 @@ python my_run_model.py --input_path '/opt/project/RealWorldScenes/UnderWater/One
 
 ![The base folder](Images/view_folder.png)
 
- - In the folder Code, you can find the python code for the srn-deblur network.
- - In the folder DataSet, you can find all data sets for training the network.
- - In the folder docker, you can find the docker file for setting up the environment.
- - In the folder FinalCheckpoints, you can find the final checkpoints for our trained model of the network published in "Scale-recurrent Network for Deep Image Deblurring".
- - In the folder Images, you can find all the available images.
-- In the folder MatlabSimulationCode, you may find the related Matlab script to create the datasets. 
-- All these scripts are in the subfolder CodeForDataSetCreation:
-  - RunSteps - the script creates the kernels for the needed focal planes and their out-of-focus planes. To run this script, you need to be able to execute the ZEMAX optimization process.
+ - In the folder `Code`, you can find the python code for the srn-deblur network.
+ - In the folder `DataSet`, you can find all data sets for training the network.
+ - In the folder `docker`, you can find the docker file for setting up the environment.
+ - In the folder `FinalCheckpoints`, you can find the final checkpoints for our trained model of the network published in "Scale-recurrent Network for Deep Image Deblurring".
+ - In the folder `Images`, you can find all the available images.
+- In the folder `MatlabSimulationCode`, you may find the related Matlab script to create the datasets. 
+- All these scripts are in the subfolder `CodeForDataSetCreation`:
+  - `RunSteps` - the script creates the kernels for the needed focal planes and their out-of-focus planes. To run this script, you need to be able to execute the ZEMAX optimization process.
   * MakeKernelStack - the script creates the final kernels used for deblurring the images. Each kernel is formed using the kernels in the previous step according to the procedure explained in the paper. Please note that you can find the kernels produced at the end of this stage in the folder DataSet.
   - BlurImgKernels - the script creates blurred images using the kernels produced in the previous stage and the sharp images. The sharp images are in the folder DataSet.
   - MakeTripletsForTrain - the script creates the list of the dataset used for training the srn-deblur network. The list contains the sharp images, the blurred images, and the kernels. 
