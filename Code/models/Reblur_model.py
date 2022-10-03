@@ -37,7 +37,7 @@ class DEBLUR(object):
             already_train_steps = args.step - self.org_ckpt_step
             already_train_epochs = already_train_steps / self.data_size
             remaining_epochs = self.epoch - already_train_epochs
-            self.max_steps = int(remaining_epochs * self.data_size + self.org_ckpt_step)
+            self.max_steps = int(remaining_epochs * self.data_size + self.args.step)
             self.learning_rate = args.learning_rate
 
         self.transf_lr = args.transfer_learning
